@@ -1,0 +1,377 @@
+<script src="../libs/jquery/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#addEquipment").click(function(){
+            $("#example").modal('show');
+        });
+        $(".tree").treemenu({delay:300}).openActive();
+        $(".add").click(function(){
+            $(".aside-box").css("display","block");
+            var text=$(this).next(".name").text()+'<br/>';
+            $(".panel-body").append(text);
+        });
+        $(".cancel").click(function(){
+            $(".aside-box").css("display","none");
+        });
+
+        var str='<div class="warning">'+ '!'+ '</div>';
+        if($(".status1").html() == '异常' ){
+            $(".status1").parent().parent().append(str);
+        }
+
+        $('.minus').click(function(){
+            $("#delete").modal('show');
+        })
+    });
+</script>
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false;
+    app.settings.asideDock = false;
+  ">
+    <!-- main -->
+    <div class="col">
+        <!-- main header -->
+        <div class="bg-light lter b-b wrapper-md">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <p>当前位置：<a ui-sref="app.dashboard-v1">首页</a>><a ui-sref="app.dashboard-v1">智能监控></a>设备列表</p>
+                </div>
+            </div>
+        </div>
+        <!-- / main header -->
+        <div class="wrapper-md">
+            <div>
+                <div style="margin-bottom: 20px;">
+                    <!-- search form -->
+                    <form class="navbar-form navbar-form-sm shift" ui-shift="prependTo" target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input style="width: 250px;" type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-li no-border rounded padder" placeholder="设备种类、设备状态、设备序号...">
+                                <span class="input-group-btn">
+                <button type="submit" class="btn btn-sm bg-li rounded"><i class="fa fa-search"></i></button>
+              </span>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- / search form -->
+                </div>
+            </div>
+            <div class="row wrapper clearfix">
+                <div class="list-left-box bg-black pull-left" style="min-height: 405px;">
+                    <ul class="tree treemenu">
+                        <li class="tree-closed"><span class="toggler"><i class=""></i>逆变器</span>
+                            <ul class="treemenu" style="display: block;margin-left: 10px;">
+                                <li class="tree-opened"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a>
+                                </li>
+                                <li class="tree-opened"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a>
+                                </li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                            </ul>
+                        </li>
+                        <li class="tree-closed"><span class="toggler"></span><a href="#">汇流箱</a>
+                            <ul class="treemenu" style="display: none;margin-left: 10px;">
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                            </ul>
+                        </li>
+                        <li class="tree-closed"><span class="toggler"></span><a href="#">环境检测仪</a>
+                            <ul class="treemenu" style="display: none;margin-left: 10px;">
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                                <li class="tree-empty"><span class="toggler"></span><a ui-sref="app.equipDetail">IV2CFD4669</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="list-right-box bg-black pull-right">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="list-box bg-dark">
+                                <div class="box-header">
+                                    <span class="add" title="对比">+</span>
+                                    <span class="name">逆变器: IV2CFD4669</span>
+                                    <span class="minus">-</span>
+                                </div>
+                                <a ui-sref="app.equipDetail"><div class="box-body clearfix">
+                                    <div class="pull-left" style="position: relative;border-right: 1px solid #515b6d;">
+                                        <div class="equip-img">
+                                            <img src="img/equip.png">
+                                        </div>
+                                        <p>状态:  <span style="color: green;">正常</span></p>
+                                    </div>
+                                    <div class="pull-right" style="width: 45%;">
+                                        <div style="width: 100%;text-align: center;line-height: 30px;">
+                                            <p><span class="power" style="color: #ff9900">16</span>kwh</p>
+                                            <p>功率</p>
+                                            <p><span class="makeElec" style="color: #ff9900">18</span>kwh</p>
+                                            <p>日发电</p>
+                                        </div>
+                                    </div>
+                                </div></a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="list-box bg-dark">
+                                <div class="box-header">
+                                    <span class="add" title="对比">+</span>
+                                    <span class="name">逆变器: IV2CFD4669</span>
+                                    <span class="minus">-</span>
+                                </div>
+                                <a ui-sref="app.equipDetail"><div class="box-body clearfix">
+                                    <div class="pull-left" style="border-right: 1px solid #515b6d;">
+                                        <div class="equip-img">
+                                            <img src="img/equip.png">
+                                        </div>
+                                        <p>状态:  <span class="status1" style="color: green;">异常</span></p>
+                                    </div>
+                                    <div class="pull-right" style="width: 45%;">
+                                        <div style="width: 100%;text-align: center;line-height: 30px;">
+                                            <p><span class="power" style="color: #ff9900">16</span>kwh</p>
+                                            <p>功率</p>
+                                            <p><span class="makeElec" style="color: #ff9900">18</span>kwh</p>
+                                            <p>日发电</p>
+                                        </div>
+                                    </div>
+                                </div></a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="list-box bg-dark">
+                                <div class="box-header">
+                                    <span class="add" title="对比">+</span>
+                                    <span class="name">逆变器: IV2CFD4669</span>
+                                    <span class="minus">-</span>
+                                </div>
+                                <a ui-sref="app.equipDetail"><div class="box-body clearfix">
+                                    <div class="pull-left" style="border-right: 1px solid #515b6d;">
+                                        <div class="equip-img">
+                                            <img src="img/equip.png">
+                                        </div>
+                                        <p>状态:  <span style="color: green;">正常</span></p>
+                                    </div>
+                                    <div class="pull-right" style="width: 45%;">
+                                        <div style="width: 100%;text-align: center;line-height: 30px;">
+                                            <p><span class="power" style="color: #ff9900">16</span>kwh</p>
+                                            <p>功率</p>
+                                            <p><span class="makeElec" style="color: #ff9900">18</span>kwh</p>
+                                            <p>日发电</p>
+                                        </div>
+                                    </div>
+                                </div></a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="list-box bg-dark">
+                                <div class="box-header">
+                                    <span class="add" title="对比">+</span>
+                                    <span class="name">逆变器: IV2CFD4669</span>
+                                    <span class="minus">-</span>
+                                </div>
+                                <a ui-sref="app.equipDetail"><div class="box-body clearfix">
+                                    <div class="pull-left" style="border-right: 1px solid #515b6d;">
+                                        <div class="equip-img">
+                                            <img src="img/equip.png">
+                                        </div>
+                                        <p>状态:  <span style="color: green;">正常</span></p>
+                                    </div>
+                                    <div class="pull-right" style="width: 45%;">
+                                        <div style="width: 100%;text-align: center;line-height: 30px;">
+                                            <p><span class="power" style="color: #ff9900">16</span>kwh</p>
+                                            <p>功率</p>
+                                            <p><span class="makeElec" style="color: #ff9900">18</span>kwh</p>
+                                            <p>日发电</p>
+                                        </div>
+                                    </div>
+                                </div></a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="list-box bg-dark">
+                                <div class="box-header">
+                                    <span class="add" title="对比">+</span>
+                                    <span class="name">逆变器: IV2CFD4669</span>
+                                    <span class="minus">-</span>
+                                </div>
+                                <a ui-sref="app.equipDetail"><div class="box-body clearfix">
+                                    <div class="pull-left" style="border-right: 1px solid #515b6d;">
+                                        <div class="equip-img">
+                                            <img src="img/equip.png">
+                                        </div>
+                                        <p>状态:  <span style="color: green;">正常</span></p>
+                                    </div>
+                                    <div class="pull-right" style="width: 45%;">
+                                        <div style="width: 100%;text-align: center;line-height: 30px;">
+                                            <p><span class="power" style="color: #ff9900">16</span>kwh</p>
+                                            <p>功率</p>
+                                            <p><span class="makeElec" style="color: #ff9900">18</span>kwh</p>
+                                            <p>日发电</p>
+                                        </div>
+                                    </div>
+                                </div></a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="list-box bg-dark">
+                                <div class="box-header">
+                                    <span class="add" title="对比">+</span>
+                                    <span class="name">逆变器: IV2CFD4669</span>
+                                    <span class="minus">-</span>
+                                </div>
+                                <a ui-sref="app.equipDetail"><div class="box-body clearfix">
+                                    <div class="pull-left" style="border-right: 1px solid #515b6d;">
+                                        <div class="equip-img">
+                                            <img src="img/equip.png">
+                                        </div>
+                                        <p>状态:  <span style="color: green;">正常</span></p>
+                                    </div>
+                                    <div class="pull-right" style="width: 45%;">
+                                        <div style="width: 100%;text-align: center;line-height: 30px;">
+                                            <p><span class="power" style="color: #ff9900">16</span>kwh</p>
+                                            <p>功率</p>
+                                            <p><span class="makeElec" style="color: #ff9900">18</span>kwh</p>
+                                            <p>日发电</p>
+                                        </div>
+                                    </div>
+                                </div></a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="list-box bg-dark">
+                                <div class="box-header">
+                                    <span class="add" title="对比">+</span>
+                                    <span class="name">逆变器: IV2CFD4669</span>
+                                    <span class="minus">-</span>
+                                </div>
+                                <a ui-sref="app.equipDetail"><div class="box-body clearfix">
+                                    <div class="pull-left" style="border-right: 1px solid #515b6d;">
+                                        <div class="equip-img">
+                                            <img src="img/equip.png">
+                                        </div>
+                                        <p>状态:  <span style="color: green;">正常</span></p>
+                                    </div>
+                                    <div class="pull-right" style="width: 45%;">
+                                        <div style="width: 100%;text-align: center;line-height: 30px;">
+                                            <p><span class="power" style="color: #ff9900">16</span>kwh</p>
+                                            <p>功率</p>
+                                            <p><span class="makeElec" style="color: #ff9900">18</span>kwh</p>
+                                            <p>日发电</p>
+                                        </div>
+                                    </div>
+                                </div></a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="list-box bg-dark">
+                                <div class="box-header">
+                                    <span class="add" title="对比">+</span>
+                                    <span class="name">逆变器: IV2CFD4669</span>
+                                    <span class="minus">-</span>
+                                </div>
+                                <a ui-sref="app.equipDetail"><div class="box-body clearfix">
+                                    <div class="pull-left" style="border-right: 1px solid #515b6d;">
+                                        <div class="equip-img">
+                                            <img src="img/equip.png">
+                                        </div>
+                                        <p>状态:  <span style="color: green;">正常</span></p>
+                                    </div>
+                                    <div class="pull-right" style="width: 45%;">
+                                        <div style="width: 100%;text-align: center;line-height: 30px;">
+                                            <p><span class="power" style="color: #ff9900">16</span>kwh</p>
+                                            <p>功率</p>
+                                            <p><span class="makeElec" style="color: #ff9900">18</span>kwh</p>
+                                            <p>日发电</p>
+                                        </div>
+                                    </div>
+                                </div></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="aside-box panel panel-default">
+                <div class="panel-heading">
+                    对比列表
+                </div>
+                <div class="panel-body"></div>
+                <div class="panel-footer">
+                    <a class="btn btn-success" ui-sref="app.compare">对比</a>
+                    <button class="cancel btn btn-default">取消</button>
+                </div>
+            </div>
+            <a class="btn" id="addEquipment" style="background: #4a8142;color: #fff;">添加设备</a>
+        </div>
+    </div>
+    <!-- / main -->
+</div>
+<div id="example" class="modal fade" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+                <h3>添加设备</h3>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label>SN号</label>
+                        <input class="form-control" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>种类</label>
+                        <select class="form-control">
+                            <option>种类</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>品牌</label>
+                        <select class="form-control">
+                            <option>品牌</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>型号</label>
+                        <select class="form-control">
+                            <option>型号</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-success">确认</a>
+                <a href="#" class="btn" style="background: #3c4452;color: #fff;" data-dismiss="modal">关闭</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="delete" class="modal fade" style="display: none;margin-top: 200px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+                <h3>删除设备</h3>
+            </div>
+            <div class="modal-body index">
+                <p>你确认要删除该设备吗？</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-success">确认</a>
+                <a href="#" class="btn" style="background: #3c4452;color: #fff;" data-dismiss="modal">关闭</a>
+            </div>
+        </div>
+    </div>
+</div>

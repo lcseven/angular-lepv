@@ -1,0 +1,137 @@
+<script>
+    $(function(){
+        $(".per_open").click(function(){
+            $(".personal").toggle();
+        });
+        $(".com_open").click(function(){
+            $(".com_info").toggle();
+        });
+    })
+</script>
+<div class="cover signup" style="min-height: 829px;">
+    <div style="margin-top: 100px;padding-top: 20px;" class="container w-xxl w-auto-xs" ng-controller="SignupFormController" ng-init="app.settings.container = false;">
+        <a href class="navbar-brand block" style="font-size: 24px;">用户注册</a>
+        <div class="m-b-lg">
+            <form name="form" class="form-validation">
+                <div class="signup_title clearfix">
+                    <span style="float:left;margin-left: 10px;cursor: pointer;font-size: 16px;">个人信息</span>
+                    <span class="per_open" style="float:right;margin-right: 10px;cursor: pointer;font-size: 16px;">▼</span>
+                </div>
+                <div class="personal">
+                    <div class="form-group clearfix">
+                        <div class="col-md-2">
+                            <label>用户ID:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="id" >
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="col-md-2">
+                            <label>用户名称:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="name" >
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="col-md-2">
+                            <label>详细地址:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="address" >
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="col-md-2">
+                            <label>联系电话:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="phone" >
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="col-md-2">
+                            <label>邮编:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="zipcode" >
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="col-md-2">
+                            <label>备注:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <textarea class="form-control"  name="remark"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="signup_title clearfix">
+                    <span style="float:left;margin-left: 10px;cursor: pointer;font-size: 16px;">公司信息</span>
+                    <span class="com_open" style="float:right;margin-right: 10px;cursor: pointer;font-size: 16px;">▼</span>
+                </div>
+                <div class="com_info" style="display: none;">
+                    <div class="form-group clearfix">
+                        <div class="col-md-2">
+                            <label>公司名称:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="company" >
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="col-md-2">
+                            <label>公司邮箱:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="email" >
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="col-md-2">
+                            <label>公司地址:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="company_address" >
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="col-md-2">
+                            <label>联系电话:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="company_phone" >
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="col-md-2">
+                            <label>传真:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="fax" >
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="col-md-2">
+                            <label>网址:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="website" >
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="col-md-2">
+                            <label>公司简介:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <textarea class="form-control" name="introduction"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-primary btn-block">注册</button>
+            </form>
+        </div>
+    </div>
+</div>

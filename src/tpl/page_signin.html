@@ -1,0 +1,29 @@
+<div class="cover1">
+  <div class="container w-xxl w-auto-xs" style="width: 360px;background: none;margin-top:100px;" ng-controller="SigninFormController" ng-init="app.settings.container = false;">
+    <div class="wrapper text-center" style="width: 100%;margin: 0 auto;">
+      <img style="width: 100%;height: 100%;" src="img/logo1.png" alt="logo">
+    </div>
+  </div>
+  <div class="container w-xxl w-auto-xs" ng-controller="SigninFormController" ng-init="app.settings.container = false;">
+    <div class="m-b-lg">
+      <form name="form" class="form-validation">
+        <div class="text-danger wrapper text-center" ng-show="authError">
+          {{authError}}
+        </div>
+        <div class="list-group list-group-sm">
+          <div class="list-group-item">
+            <input type="email" placeholder="邮箱/用户名" class="form-control no-border" ng-model="user.email" required>
+          </div>
+          <div class="list-group-item">
+            <input type="password" placeholder="密码" class="form-control no-border" ng-model="user.password" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="login()" ng-disabled='form.$invalid'>登录</button>
+        <div class="clearfix" style="padding: 30px 50px;">
+          <div class="pull-right text-center m-t m-b"><a ui-sref="access.forgotpwd">忘记密码?</a></div>
+          <div class="pull-left text-center m-t m-b"><a ui-sref="access.signup">注册</a></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,336 @@
+<script src="../libs/jquery/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../libs/jquery.tablesorter.min.js"></script>
+<script>
+  $(function(){
+    $(".cancel").click(function(){
+      $("#example").modal('show');
+    });
+
+    $("#myTable").tablesorter();
+  });
+</script>
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+  <div class="col">
+    <div class="bg-light lter b-b wrapper-md">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <p>当前位置：<a ui-sref="app.dashboard-v1">首页</a>><a ui-sref="app.dashboard-v1">智能监控></a>电站列表</p>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
+      <div>
+        <div style="margin-bottom: 20px;">
+          <form style="position: relative" class="navbar-form navbar-form-sm shift" ui-shift="prependTo" target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
+            <select class="form-select" style="position: absolute;z-index: 100;">
+              <option>电站名称</option>
+              <option>装机功率</option>
+              <option>总发电量</option>
+            </select>
+            <div class="form-group stationList">
+              <div class="input-group" style="width: 300px;">
+                <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-li no-border rounded padder" placeholder="Search...">
+                <span class="input-group-btn">
+                <button type="submit" class="btn btn-sm bg-li rounded"><i class="fa fa-search"></i></button>
+              </span>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="table-responsive">
+          <table id="myTable" class="table table-striped table-hover">
+            <thead style="background: #303641;">
+            <tr>
+              <th>电站名称</th>
+              <th>图片</th>
+              <th>国家/地区</th>
+              <th>装机功率(MWp)</th>
+              <th>日发电量(kWh)</th>
+              <th>总发电量(kWh)</th>
+              <th>日收益($)</th>
+              <th>总收益($)</th>
+              <th>设备</th>
+              <th>状态</th>
+              <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a ui-sref="app.overview" class="test-elec">测试电站1</a></td>
+                <td><img class="elec-img" src="img/a0.jpg"></td>
+                <td>中国/无锡</td>
+                <td>500</td>
+                <td>120</td>
+                <td>15620</td>
+                <td>320</td>
+                <td>52000</td>
+                <td><a class="equip-list" ui-sref="app.equipList">设备列表</a></td>
+                <td>
+                  <a href class="active"><i class="fa fa-check text-success text-active"></i></a>
+                </td>
+                <td>
+                  <a class="detail" href="#" ui-sref="app.elecDetail">详细</a>
+                  <i class="glyphicon glyphicon-trash cancel"></i>
+                </td>
+              </tr>
+              <tr>
+                <td><a ui-sref="app.overview" class="test-elec">测试电站2</a></td>
+                <td><img class="elec-img" src="img/a0.jpg"></td>
+                <td>中国/无锡</td>
+                <td>600</td>
+                <td>120</td>
+                <td>15620</td>
+                <td>320</td>
+                <td>52000</td>
+                <td><a class="equip-list" ui-sref="app.equipList">设备列表</a></td>
+                <td>
+                  <a href class="active"><i class="fa fa-check text-success text-active"></i></a>
+                </td>
+                <td>
+                  <a class="detail" href="#" ui-sref="app.elecDetail">详细</a>
+                  <i class="glyphicon glyphicon-trash cancel"></i>
+                </td>
+              </tr>
+              <tr>
+                <td><a ui-sref="app.overview" class="test-elec">测试电站3</a></td>
+                <td><img class="elec-img" src="img/a0.jpg"></td>
+                <td>中国/无锡</td>
+                <td>550</td>
+                <td>120</td>
+                <td>15620</td>
+                <td>320</td>
+                <td>52000</td>
+                <td><a class="equip-list" ui-sref="app.equipList">设备列表</a></td>
+                <td>
+                  <a href class="active"><i class="fa fa-check text-success text-active"></i></a>
+                </td>
+                <td>
+                  <a class="detail" href="#" ui-sref="app.elecDetail">详细</a>
+                  <i class="glyphicon glyphicon-trash cancel"></i>
+                </td>
+              </tr>
+              <tr>
+                <td><a ui-sref="app.overview" class="test-elec">测试电站4</a></td>
+                <td><img class="elec-img" src="img/a0.jpg"></td>
+                <td>中国/无锡</td>
+                <td>700</td>
+                <td>120</td>
+                <td>15620</td>
+                <td>320</td>
+                <td>52000</td>
+                <td><a class="equip-list" ui-sref="app.equipList">设备列表</a></td>
+                <td>
+                  <a href class="active"><i class="fa fa-check text-success text-active"></i></a>
+                </td>
+                <td>
+                  <a class="detail" href="#" ui-sref="app.elecDetail">详细</a>
+                  <i class="glyphicon glyphicon-trash cancel"></i>
+                </td>
+              </tr>
+              <tr>
+                <td><a ui-sref="app.overview" class="test-elec">测试电站5</a></td>
+                <td><img class="elec-img" src="img/a0.jpg"></td>
+                <td>中国/无锡</td>
+                <td>560</td>
+                <td>120</td>
+                <td>15620</td>
+                <td>320</td>
+                <td>52000</td>
+                <td><a class="equip-list" ui-sref="app.equipList">设备列表</a></td>
+                <td>
+                  <a href class="active"><i class="fa fa-check text-success text-active"></i></a>
+                </td>
+                <td>
+                  <a class="detail" href="#" ui-sref="app.elecDetail">详细</a>
+                  <i class="glyphicon glyphicon-trash cancel"></i>
+                </td>
+              </tr>
+              <tr>
+                <td><a ui-sref="app.overview" class="test-elec">测试电站6</a></td>
+                <td><img class="elec-img" src="img/a0.jpg"></td>
+                <td>中国/无锡</td>
+                <td>720</td>
+                <td>120</td>
+                <td>15620</td>
+                <td>320</td>
+                <td>52000</td>
+                <td><a class="equip-list" ui-sref="app.equipList">设备列表</a></td>
+                <td>
+                  <a href class="active"><i class="fa fa-check text-success text-active"></i></a>
+                </td>
+                <td>
+                  <a class="detail" href="#" ui-sref="app.elecDetail">详细</a>
+                  <i class="glyphicon glyphicon-trash cancel"></i>
+                </td>
+              </tr>
+              <tr>
+                <td><a ui-sref="app.overview" class="test-elec">测试电站7</a></td>
+                <td><img class="elec-img" src="img/a0.jpg"></td>
+                <td>中国/无锡</td>
+                <td>800</td>
+                <td>120</td>
+                <td>15620</td>
+                <td>320</td>
+                <td>52000</td>
+                <td><a class="equip-list" ui-sref="app.equipList">设备列表</a></td>
+                <td>
+                  <a href class="active"><i class="fa fa-check text-success text-active"></i></a>
+                </td>
+                <td>
+                  <a class="detail" href="#" ui-sref="app.elecDetail">详细</a>
+                  <i class="glyphicon glyphicon-trash cancel"></i>
+                </td>
+              </tr>
+              <tr>
+                <td><a ui-sref="app.overview" class="test-elec">测试电站8</a></td>
+                <td><img class="elec-img" src="img/a0.jpg"></td>
+                <td>中国/无锡</td>
+                <td>900</td>
+                <td>120</td>
+                <td>15620</td>
+                <td>320</td>
+                <td>52000</td>
+                <td><a class="equip-list" ui-sref="app.equipList">设备列表</a></td>
+                <td>
+                  <a href class="active"><i class="fa fa-check text-success text-active"></i></a>
+                </td>
+                <td>
+                  <a class="detail" href="#" ui-sref="app.elecDetail">详细</a>
+                  <i class="glyphicon glyphicon-trash cancel"></i>
+                </td>
+              </tr>
+              <tr>
+                <td><a ui-sref="app.overview" class="test-elec">测试电站9</a></td>
+                <td><img class="elec-img" src="img/a0.jpg"></td>
+                <td>中国/无锡</td>
+                <td>820</td>
+                <td>120</td>
+                <td>15620</td>
+                <td>320</td>
+                <td>52000</td>
+                <td><a class="equip-list" ui-sref="app.equipList">设备列表</a></td>
+                <td>
+                  <a href class="active"><i class="fa fa-check text-success text-active"></i></a>
+                </td>
+                <td>
+                  <a class="detail" href="#" ui-sref="app.elecDetail">详细</a>
+                  <i class="glyphicon glyphicon-trash cancel"></i>
+                </td>
+              </tr>
+              <tr>
+                <td><a ui-sref="app.overview" class="test-elec">测试电站10</a></td>
+                <td><img class="elec-img" src="img/a0.jpg"></td>
+                <td>中国/无锡</td>
+                <td>730</td>
+                <td>120</td>
+                <td>147520</td>
+                <td>320</td>
+                <td>52000</td>
+                <td><a class="equip-list" ui-sref="app.equipList">设备列表</a></td>
+                <td>
+                  <a href class="active"><i class="fa fa-check text-success text-active"></i></a>
+                </td>
+                <td>
+                  <a class="detail" href="#" ui-sref="app.elecDetail">详细</a>
+                  <i class="glyphicon glyphicon-trash cancel"></i>
+                </td>
+              </tr>
+              <tr>
+                <td><a ui-sref="app.overview" class="test-elec">测试电站11</a></td>
+                <td><img class="elec-img" src="img/a0.jpg"></td>
+                <td>中国/无锡</td>
+                <td>630</td>
+                <td>120</td>
+                <td>195630</td>
+                <td>320</td>
+                <td>52000</td>
+                <td><a class="equip-list" ui-sref="app.equipList">设备列表</a></td>
+                <td>
+                  <a href class="active"><i class="fa fa-check text-success text-active"></i></a>
+                </td>
+                <td>
+                  <a class="detail" href="#" ui-sref="app.elecDetail">详细</a>
+                  <i class="glyphicon glyphicon-trash cancel"></i>
+                </td>
+              </tr>
+              <tr>
+                <td><a ui-sref="app.overview" class="test-elec">测试电站12</a></td>
+                <td><img class="elec-img" src="img/a0.jpg"></td>
+                <td>中国/无锡</td>
+                <td>510</td>
+                <td>120</td>
+                <td>185200</td>
+                <td>320</td>
+                <td>52000</td>
+                <td><a class="equip-list" ui-sref="app.equipList">设备列表</a></td>
+                <td>
+                  <a href class="active"><i class="fa fa-check text-success text-active"></i></a>
+                </td>
+                <td>
+                  <a class="detail" href="#" ui-sref="app.elecDetail">详细</a>
+                  <i class="glyphicon glyphicon-trash cancel"></i>
+                </td>
+              </tr>
+              <tr>
+                <td><a ui-sref="app.overview" class="test-elec">测试电站13</a></td>
+                <td><img class="elec-img" src="img/a0.jpg"></td>
+                <td>中国/无锡</td>
+                <td>505</td>
+                <td>120</td>
+                <td>15620</td>
+                <td>320</td>
+                <td>52000</td>
+                <td><a class="equip-list" ui-sref="app.equipList">设备列表</a></td>
+                <td>
+                  <a href class="active"><i class="fa fa-check text-success text-active"></i></a>
+                </td>
+                <td>
+                  <a class="detail" href="#" ui-sref="app.elecDetail">详细</a>
+                  <i class="glyphicon glyphicon-trash cancel"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <footer>
+          <div class="row">
+            <div class="col-sm-2 pull-left">
+              <a ui-sref="app.addStation" class="btn add">添加电站</a>
+            </div>
+            <div class="col-sm-4 text-right text-center-xs pull-right">
+              <ul class="pagination pagination-sm m-t-none m-b-none">
+                <li><a href><i class="fa fa-chevron-left"></i></a></li>
+                <li><a href>1</a></li>
+                <li><a href>2</a></li>
+                <li><a href>3</a></li>
+                <li><a href>4</a></li>
+                <li><a href>5</a></li>
+                <li><a href><i class="fa fa-chevron-right"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <div id="example" class="modal fade" style="display: none;margin-top: 200px;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <a class="close" data-dismiss="modal">×</a>
+            <h3>删除电站</h3>
+          </div>
+          <div class="modal-body index">
+            <p>你确认要删除电站吗？</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-success">确认</a>
+            <a href="#" class="btn" style="background: #3c4452;color: #fff;" data-dismiss="modal">关闭</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

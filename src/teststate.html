@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"  ng-app="Myapp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <table ng-controller="sationCtrl">
+        <thead >
+        <tr>
+            <th ng-click="a()">电站ID</th>
+            <th>电站名称</th>
+            <th>图片</th>
+            <th>所在地区</th>
+            <th>装机功率(MWp)</th>
+            <th>日发电量(kWh)</th>
+            <th>总发电量(kWh)</th>
+            <th>日收益($)</th>
+            <th>总收益($)</th>
+            <th>状态</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="state in names">
+            <td><a>{{state.id}}</a></td>
+            <td>{{state.name}}</td>
+            <td><img class="elec-img" src={{state.img}} width="50px"></td>
+            <td>{{state.country}}</td>
+            <td>{{state.MWp}}</td>
+            <td>{{state.dayPower}}</td>
+            <td>{{state.totalPower}}</td>
+            <td>{{state.daySalary}}</td>
+            <td>{{state.totalSalary}}</td>
+            <td>{{state.status}}</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+<script src="../libs/angular/angular/angular.js"></script>
+<script>
+    var app =angular.module('Myapp',[]);
+    app.controller('sationCtrl',function ($scope,$http) {
+        $scope.a = function () {
+            alert(1)
+        }
+        $http({
+            url:'../src/api/station-list.json',
+            method: 'get',
+           /* data: {email:'123456@qq.com'}*/
+        }).success(function(res){
+           $scope.names= res.states;
+
+        }).error(function(){
+            console.log("error");
+        })
+
+
+        /*$http.get("http://localhost:63342/%E4%B9%90%E4%BC%8F%E7%9B%91%E6%8E%A7%E5%B9%B3%E5%8F%B0/src/api/stationlist.json")
+                .success(function (response) {$scope.names = response.states;});*/
+    })
+</script>
+</body>
+</html>

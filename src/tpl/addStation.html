@@ -1,0 +1,310 @@
+<script src="../libs/uploadPreview.js"></script>
+<script>
+    $(function(){
+
+        $("input[type=file]").change(function(){
+            $(this).parents(".uploader").find(".filename").val($(this).val());
+        });
+
+        $("input[type=file]").each(function(){
+            if($(this).val()==""){
+                $(this).parents(".uploader").find(".filename").val("请选择文件...");
+            }
+        });
+
+        new uploadPreview({ UpBtn: "up_img", DivShow: "imgdiv", ImgShow: "imgShow" });
+        new uploadPreview({ UpBtn: "up_img1", DivShow: "imgdiv1", ImgShow: "imgShow1" });
+        new uploadPreview({ UpBtn: "up_img2", DivShow: "imgdiv2", ImgShow: "imgShow2" });
+
+    });
+
+</script>
+<div>
+    <div class="bg-light lter b-b wrapper-md">
+        <div class="row">
+            <div class="col-sm-6 col-xs-12">
+                <p>当前位置：<a ui-sref="app.dashboard-v1">首页</a>>添加电站</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row wrapper addStation">
+        <form>
+            <div class="content">
+                <div class="content-header">基本信息</div>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>电站名称</label>
+                                <input name="elecStationName" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label>安装时间</label>
+                                <input class="date_time" name="time" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label>跟踪类型</label>
+                                <select name="followType">
+                                    <option value="固定">固定</option>
+                                    <option value="双轴">双轴</option>
+                                    <option value="单轴">单轴</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>设计功率</label>
+                                <input name="power" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label>电站类型</label>
+                                <select name="installType">
+                                    <option value="地面">地面</option>
+                                    <option value="屋顶">屋顶</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-header">地理位置</div>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>洲</label>
+                                <select name="station">
+                                    <option value="亚洲">亚洲</option>
+                                    <option value="欧洲">欧洲</option>
+                                    <option value="北美洲">北美洲</option>
+                                    <option value="南美洲">南美洲</option>
+                                    <option value="非洲">非洲</option>
+                                    <option value="大洋洲">大洋洲</option>
+                                    <option value="南极洲">南极洲</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>省</label>
+                                <select name="province">
+                                    <option value="江苏">江苏</option>
+                                    <option value="浙江">浙江</option>
+                                    <option value="上海">上海</option>
+                                    <option value="北京">北京</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>详细地址</label>
+                                <input name="address" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>国家</label>
+                                <select name="country">
+                                    <option value="中国">中国</option>
+                                    <option value="韩国">韩国</option>
+                                    <option value="日本">日本</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>市</label>
+                                <select name="city">
+                                    <option value="无锡">无锡</option>
+                                    <option value="苏州">苏州</option>
+                                    <option value="常州">常州</option>
+                                    <option value="南京">南京</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>时区</label>
+                                <select name="timeZone">
+                                    <option value="北京时间">北京时间</option>
+                                    <option value="伦敦时间">伦敦时间</option>
+                                    <option value="纽约时间">纽约时间</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-header">收益信息（以1kWh发电量为换算标准）</div>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>单位电价</label>
+                                <input style="width: 60%;" name="elecPrice" type="text">
+                                <select style="width: 10%;" name="unit">
+                                    <option value="￥">￥</option>
+                                    <option value="$">$</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>二氧化碳减排（kg)</label>
+                                <input name="co2" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>节省用煤（kg）</label>
+                                <input name="coal" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label>二氧化硫减排（kg)</label>
+                                <input name="so2" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-header">管理信息</div>
+                <div class="content-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <label style="width: 100%;">报表邮件</label>
+                            </div>
+                            <div class="col-md-11">
+                                <div class="col-md-4">
+                                    <input style="width: auto;" type="checkbox" name="mail" value="day">日报
+                                    <input style="width: auto;" type="checkbox" name="mail" value="month">月报
+                                    <input style="width: auto;" type="checkbox" name="mail" value="year">年报
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <label style="width: 100%;">异常邮件</label>
+                            </div>
+                            <div class="col-md-11">
+                                <div class="col-md-4">
+                                    <input style="width: auto;" type="radio" name="abnormalMail" value="1">是
+                                    <input style="width: auto;" type="radio" name="abnormalMail" value="0">否
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <label style="width: 100%;">联系人姓名</label>
+                            </div>
+                            <div class="col-md-11">
+                                <div class="col-md-5">
+                                    <input type="text" name="connectName" style="width: 100%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <label style="width: 100%;">联系人电话</label>
+                            </div>
+                            <div class="col-md-11">
+                                <div class="col-md-5">
+                                    <input type="text" name="phone" style="width: 100%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <label style="width: 100%;">联系人邮箱</label>
+                            </div>
+                            <div class="col-md-11">
+                                <div class="col-md-5">
+                                    <input type="text" name="connectEmail" style="width: 100%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-header">电站图片（图片上传仅支持jpg,png格式,图片最大不能超过5M）</div>
+                <div class="content-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <label style="width: 100%;">图片上传1</label>
+                            </div>
+                            <div class="col-md-11">
+                                <div class="col-md-8">
+                                    <div class="uploader clearfix">
+                                        <input type="text" class="filename" readonly="">
+                                        <input type="button" name="file" class="button1" value="上传...">
+                                        <input type="file" id="up_img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <label style="width: 100%;">图片上传2</label>
+                            </div>
+                            <div class="col-md-11">
+                                <div class="col-md-8">
+                                    <div class="uploader clearfix">
+                                        <input type="text" class="filename" readonly="">
+                                        <input type="button" name="file" class="button1" value="上传...">
+                                        <input type="file" id="up_img1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <label style="width: 100%;">图片上传3</label>
+                            </div>
+                            <div class="col-md-11">
+                                <div class="col-md-8">
+                                    <div class="uploader clearfix">
+                                        <input type="text" class="filename" readonly="">
+                                        <input type="button" name="file" class="button1" value="上传...">
+                                        <input type="file" id="up_img2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div id="imgdiv" style="width: 100%;height: 200px;padding: 0 20px;">
+                            <img id="imgShow" style="width: 100%;height: 100%;">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div id="imgdiv1" style="width: 100%;height: 200px;padding: 0 20px;">
+                            <img id="imgShow1" style="width: 100%;height: 100%;">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div id="imgdiv2" style="width: 100%;height: 200px;padding: 0 20px;">
+                            <img id="imgShow2" style="width: 100%;height: 100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top: 30px;text-align: right;">
+                <a href="#" style="background: #4a8142;border: 1px solid #4a8142;" class="btn btn-success" type="submit">确认</a>
+                <a href="#" class="btn btn-default" type="submit">取消</a>
+            </div>
+        </form>
+    </div>
+</div>

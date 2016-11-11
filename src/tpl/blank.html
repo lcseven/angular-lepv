@@ -1,0 +1,11 @@
+<script src="../../libs/jquery/jquery/dist/jquery.js"></script>
+<script>
+    $(function(){
+        $('#id').on('click', function() {
+            $('#yourinputname').trigger('click');
+        });
+    })
+</script>
+
+<button id="id">Open</button>
+<input id="yourinputname" type="file" name="yourinputname" style="display: none;" />

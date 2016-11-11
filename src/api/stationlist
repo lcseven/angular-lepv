@@ -1,0 +1,28 @@
+{
+      "states": [
+            {
+                  "id": 1,
+                  "name": "测试电站一",
+                  "img": "http://img2.3lian.com/img2007/13/85/20080405142608183.png",
+                  "country": "中国/无锡",
+                  "MWp": 500,
+                  "dayPower": 120,
+                  "totalPower": 15620,
+                  "daySalary": 320,
+                  "totalSalary": 52000,
+                  "status": "正常"
+            },
+            {
+                  "id": 2,
+                  "name": "测试电站二",
+                  "img": "http://img2.3lian.com/img2007/13/85/20080405142608183.png",
+                  "country": "中国/无锡",
+                  "MWp": 500,
+                  "dayPower": 120,
+                  "totalPower": 15620,
+                  "daySalary": 320,
+                  "totalSalary": 52000,
+                  "status": "正常"
+            }
+      ]
+}

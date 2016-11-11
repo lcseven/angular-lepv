@@ -1,0 +1,381 @@
+<script src="../libs/bootstrap-datepicker.js"></script>
+<script src="../libs/bootstrap-datepicker.zh-CN.min.js"></script>
+<script>
+    $(function(){
+        $('.date-picker').datepicker({
+            language: 'zh-CN',
+            autoclose: true,
+            startView: 2,
+            maxViewMode: 2,
+            minViewMode:2,
+            format: 'yyyy'
+        });
+
+        $("#timeType").change(function(){
+            $('.date-picker').val('');
+            var type=$('#timeType option:selected').text();
+            if(type === '年'){
+                $('.date-picker').datepicker('remove');
+                $('.date-picker').datepicker({
+                    language: 'zh-CN',
+                    autoclose: true,
+                    startView: 2,
+                    maxViewMode: 2,
+                    minViewMode:2,
+                    format: 'yyyy'
+                })
+                $('#average').html('每月平均电量');
+
+            }else if(type === '月'){
+                $('.date-picker').datepicker('remove');
+                $('.date-picker').datepicker({
+                    format: 'yyyy-mm',
+                    autoclose: true,
+                    todayBtn: true,
+                    minViewMode: 1,
+                    language:  'zh-CN'
+                });
+                $('#average').html('每天平均电量');
+            }else{
+                $('.date-picker').datepicker('remove');
+                $('.date-picker').datepicker({
+                    language: 'zh-CN',
+                    autoclose: true,
+                    format: 'yyyy-mm-dd'
+                });
+                $('#average').html('每小时平均电量');
+            }
+        })
+    })
+</script>
+<div>
+    <div class="bg-light lter b-b wrapper-md">
+        <div class="row">
+            <div class="col-sm-6 col-xs-12">
+                <p>当前位置：<a ui-sref="app.dashboard-v1">首页</a>><a ui-sref="app.dashboard-v1">智能监控></a>设备发电</p>
+            </div>
+        </div>
+    </div>
+    <!-- stats -->
+    <div class="row wrapper power">
+        <form>
+            <div class="col-md-2">
+                <label>时间类型</label>
+                <select id="timeType" name="timeType" style="width: 70%;background: #a9aeb9;border: none;">
+                    <option value="year">年</option>
+                    <option value="month">月</option>
+                    <option value="day">日</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label>选择时间</label>
+                <input name="time" class="date-picker" style="width: 70%;background: #a9aeb9;border: none;height: 23px;">
+            </div>
+            <div class="col-md-2">
+                <label>电站名称</label>
+                <select name="stationName" style="width: 70%;background: #a9aeb9;border: none;">
+                    <option>电站名称一</option>
+                    <option>电站名称二</option>
+                    <option>电站名称三</option>
+                </select>
+            </div>
+            <div class="col-md-2 col-md-offset-4" style="text-align: right;">
+                <button id="generateTable">生成报表</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="row wrapper" style="padding: 0 30px;margin-top: 10px;">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover power-table">
+                <thead style="background: #303641;">
+                <tr>
+                    <th>序号</th>
+                    <th>所属电站</th>
+                    <th>设备类型</th>
+                    <th>设备编号</th>
+                    <th>5:00-6:00</th>
+                    <th>6:00-7:00</th>
+                    <th>7:00-8:00</th>
+                    <th>8:00-9:00</th>
+                    <th>9:00-10:00</th>
+                    <th>10:00-11:00</th>
+                    <th>11:00-12:00</th>
+                    <th>12:00-13:00</th>
+                    <th>13:00-14:00</th>
+                    <th>14:00-15:00</th>
+                    <th>15:00-16:00</th>
+                    <th>16:00-17:00</th>
+                    <th>17:00-18:00</th>
+                    <th>18:00-19:00</th>
+                    <th>20:00-21:00</th>
+                    <th>总发电量</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><a ui-sref="app.overview" class="test-elec">1</a></td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                </tr>
+                <tr>
+                    <td><a ui-sref="app.overview" class="test-elec">2</a></td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                </tr>
+                <tr>
+                    <td><a ui-sref="app.overview" class="test-elec">3</a></td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                </tr>
+                <tr>
+                    <td><a ui-sref="app.overview" class="test-elec">4</a></td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                </tr>
+                <tr>
+                    <td><a ui-sref="app.overview" class="test-elec">4</a></td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                </tr>
+                <tr>
+                    <td><a ui-sref="app.overview" class="test-elec">4</a></td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                </tr>
+                <tr>
+                    <td><a ui-sref="app.overview" class="test-elec">4</a></td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                </tr>
+                <tr>
+                    <td><a ui-sref="app.overview" class="test-elec">4</a></td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                </tr>
+                <tr>
+                    <td><a ui-sref="app.overview" class="test-elec">4</a></td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                </tr>
+                <tr>
+                    <td><a ui-sref="app.overview" class="test-elec">4</a></td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                </tr>
+                <tr>
+                    <td><a ui-sref="app.overview" class="test-elec">4</a></td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>121.36</td>
+                    <td>101.36</td>
+                    <td>126.36</td>
+                    <td>126.36</td>
+                    <td>113.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                    <td>123.36</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row wrapper powerInfo">
+        <div class="col-md-4">
+            <i class="fa fa-line-chart"></i>
+            <label id="average">每小时平均电量:</label>
+            <span>38.2KWh</span>
+        </div>
+        <div class="col-md-4">
+            <i class="fa fa-arrow-circle-o-up"></i>
+            <label id="max">最大发电量:</label>
+            <span>64.0KWh</span>
+        </div>
+        <div class="col-md-4">
+            <i class="fa fa-clock-o"></i>
+            <label id="timezone">时段:</label>
+            <span>11:00-12:00</span>
+        </div>
+    </div>
+</div>

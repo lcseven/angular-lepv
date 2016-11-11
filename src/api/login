@@ -1,0 +1,10 @@
+{
+  "user" : {
+       "name" : "Bossi",
+       "email": "bossi@g.com",
+       "password":123456
+     },
+     "data" : {
+         "success" : 1
+       }
+}

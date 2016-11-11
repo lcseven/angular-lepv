@@ -1,0 +1,46 @@
+<div class="navbar-header">
+  <button class="pull-right visible-xs dk" ui-toggle-class="show" data-target=".navbar-collapse">
+    <i class="glyphicon glyphicon-cog"></i>
+  </button>
+  <button class="pull-right visible-xs" ui-toggle-class="off-screen" data-target=".app-aside" ui-scroll-to="app">
+    <i class="glyphicon glyphicon-align-justify"></i>
+  </button>
+  <a href="#/" class="navbar-brand text-lt">
+    <img src="img/logo.png" alt=".">
+  </a>
+</div>
+
+
+<div class="collapse pos-rlt navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}">
+        <ul class="nav navbar-nav hidden-sm">
+          <li><a href="" class="navli" ng-click="app.settings.asideFolded = !app.settings.asideFolded" tabindex="0">
+            <i class="fa fa-dedent fa-fw"></i>
+          </a></li>
+          <li><a ui-sref="app.dashboard-v1" class="navli monitor active">智能监控</a></li>
+          <li><a href="#" class="navli design">电站设计</a></li>
+          <li><a href="#" class="navli maintenance">售后维护</a></li>
+          <li><a href="#" class="navli e-commerce">电子商务</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown" dropdown>
+            <a href class="dropdown-toggle clear" dropdown-toggle>
+              <span>Welcome</span>
+              <span class="thumb-sm avatar m-t-n-sm m-b-n-sm m-l-sm">
+                <img src="img/a0.jpg" alt="...">
+              </span> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu animated fadeInRight w">
+              <li>
+                <a ui-sref="user.maintenance">信息维护</a>
+              </li>
+              <li>
+                <a ui-sref="user.changepwd">修改密码</a>
+              </li>
+              <li>
+                <a ui-sref="access.signin">退出</a>
+              </li>
+
+            </ul>
+          </li>
+        </ul>
+      </div>
